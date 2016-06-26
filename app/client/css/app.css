@@ -1,0 +1,316 @@
+:root {
+  --grey: #3e4345;
+  --light-grey: color(var(--grey) whiteness(+40%));
+  --blue: #219ac2;
+  --text-color: var(--grey);
+  --bg-color: #fcfcfc;
+  --font: 'Lato', "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --fs16: 1rem;
+  --fs21: 1.3125rem;
+  --fs28: 1.75rem;
+  --fs37: 2.3125rem;
+}
+
+@import "../../../node_modules/normalize.css/normalize.css";
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: normal;
+  margin-top: 0
+}
+
+a,
+.link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid color(var(--text-color) a(20%));
+  transition: .2s border-color;
+  cursor: pointer;
+}
+a:hover {
+  border-color: color(var(--text-color) a(60%));
+}
+
+input[type=email] {
+  background-color: #fff;
+  color: var(--text-color);
+  padding: 16px 21px;
+  border: 3px solid var(--light-grey);
+  width: 100%;
+  transition: .2s border-color;
+}
+
+input[type=email]:focus {
+  outline: 0;
+  border-color: var(--blue);
+}
+
+.btn {
+  background-color: var(--blue);
+  color: #fff;
+  border: 0;
+  padding: 16px 50px;
+  width: 100%;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.page-head {
+  background-color: #fff;
+  border-bottom: 1px solid color(var(--bg-color) shade(5%));
+  color: var(--light-grey);
+  padding: 20px 0 20px 40px;
+  width: 100%;
+  top: 0;
+}
+
+.page-head-title {
+  font-size: var(--fs28);
+  color: var(--blue);
+  font-weight: bold;
+  margin: 0;
+  display: inline;
+}
+
+.page-head-title > a {
+  color: inherit;
+  border: 0;
+}
+
+.page-head-subtitle {
+  font-size: var(--fs16);
+  opacity: .9;
+  margin-bottom: 0;
+  display: inline;
+  margin-left: 10px;
+}
+
+.page-foot ul {
+  list-style-type: none;
+  padding: 0;
+  color: color(var(--text-color) a(50%));
+}
+
+.page-foot li {
+  margin-top: 3px;
+}
+
+@media(min-width: 560px) {
+  .page-foot li {
+    display: inline-block;
+  }
+
+  .page-foot li + li {
+    margin-left: 10px;
+  }
+
+  .page-foot li + li:before {
+    content: "\2022";
+    display: inline-block;
+    margin-right: 10px;
+    color: color(var(--text-color) a(20%));
+  }
+}
+
+.digest-section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: var(--fs28);
+  margin-bottom: 0.2rem;
+}
+
+.section-introduction {
+  margin-top: 0;
+  font-size: var(--fs21);
+  color: color(#fff a(50%));
+  margin-bottom: 1.5rem;
+}
+
+.interests-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.interests-list > li {
+  display: inline-block;
+  margin-right: 24px;
+}
+
+.interests-list input {
+  position: absolute;
+  left: -9999px;
+}
+
+.interest-box {
+  display: block;
+  height: 150px;
+  width: 150px;
+  border: 4px solid var(--light-grey);
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  position: relative;
+  border-radius: 2px;
+  transition: .2s border-color;
+  text-align: center;
+  background-color: var(--grey);
+  background-position: center center;
+  background-size: cover;
+  padding: 10px;
+  color: #fff;
+  margin-bottom: 24px;
+  user-select: none;
+}
+
+.interest-box:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.interest-box > span {
+  position: relative;
+  z-index: 1;
+}
+
+[type=checkbox]:focus + .interest-box {
+  border-color: color(var(--blue) a(50%));
+}
+
+@custom-selector :--interest-box-checked [type=checkbox]:checked + .interest-box;
+:--interest-box-checked {
+  border-color: var(--blue);
+}
+
+.interest-box .checkmark {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 0;
+  right: 0;
+  padding: 6px;
+  border-bottom-left-radius: 2px;
+  transition: .2s background-color;
+}
+
+:--interest-box-checked .checkmark {
+  background-color: var(--blue);
+}
+
+.interest-box .checkmark-icon {
+  margin-top: -2px;
+  margin-right: -2px;
+}
+
+.interest-box .checkmark-icon path {
+  fill: var(--light-grey);
+  transition: .2s fill;
+}
+
+:--interest-box-checked .checkmark-icon path {
+  fill: #fff;
+  opacity: 1;
+}
+
+.interest-box .checkmark-check {
+  opacity: 0;
+}
+
+.interest-spinner {
+  display: inline-block;
+  transition: .4s width ease-out;
+  position: relative;
+}
+
+.interest-spinner > .current {
+  white-space: nowrap;
+}
+
+.interest-spinner > .next {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 50%;
+  width: 500px;
+  margin-left: -250px;
+  white-space: nowrap;
+  opacity: 0;
+}
+
+#schedule-biweekly {
+  position: absolute;
+  left: -9999px;
+}
+
+#schedule-biweekly ~ .biweekly-schedule-label {
+  display: none;
+}
+
+#schedule-biweekly:checked ~ .biweekly-schedule-label {
+  display: inline;
+}
+
+#schedule-biweekly:checked ~ .weekly-schedule-label {
+  display: none;
+}
+
+.main-column {
+  padding: 20px;
+}
+
+@media(min-width: 875px) {
+  .columns {
+    display: flex;
+  }
+
+  .main-column {
+    width: 50%;
+    padding: 40px;
+  }
+}
+
+.form-column {
+  background-color: var(--grey);
+  color: #fff;
+}
+
+.links-list {
+  padding: 0;
+  list-style: none;
+}
+
+.links-list img {
+  max-width: 100%;
+  height: auto;
+}

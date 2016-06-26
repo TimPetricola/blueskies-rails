@@ -1,0 +1,2 @@
+module BlueSkies
+end
